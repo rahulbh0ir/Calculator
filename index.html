@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" href="https://fav.farm/💩" />
+</head>
+
+<body>
+    <style>
+        
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: lightsteelblue;
+        }
+
+        button{
+            font-size: 1.5rem;
+        }
+
+        .calculator {
+            text-align: center;
+           
+            padding: 5px;
+            width: 500px;
+            height: 500px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-gap: 0px;
+
+            grid-template-areas: 
+                "display display display display"
+                "plus minus multipy divide"
+                "seven eight nine equal"
+                "four five six equal"
+                "one two three equal"
+                "clear zero dot equal";
+
+
+        }
+
+        .display {
+            grid-area: display;
+            border-top-right-radius: 1rem;
+            border-top-left-radius: 1rem;
+            background-color: black;
+            color: white;
+            font-size: 4rem;
+            text-align: end;
+            padding: 1rem;
+        }
+
+        .plus {
+            grid-area: plus;
+        }
+
+        .minus {
+            grid-area: minus;
+        }
+
+        .multipy {
+            grid-area: multipy;
+        }
+
+        .divide {
+            grid-area: divide;
+        }
+
+        .seven {
+            grid-area: seven;
+        }
+
+        .eight {
+            grid-area: eight;
+        }
+
+        .nine {
+            grid-area: nine;
+        }
+
+        .four {
+            grid-area: four;
+        }
+
+        .five {
+            grid-area: five;
+        }
+
+        .six {
+            grid-area: six;
+        }
+        .three {
+            grid-area: three;
+        }
+
+        .two {
+            grid-area: two;
+        }
+
+        .one {
+            grid-area: one;
+        }
+
+        .zero {
+            grid-area: zero;
+        }
+
+        .dot {
+            grid-area: dot;
+        }
+
+        .clear {
+            grid-area: clear;
+            background-color: lightcoral;
+            border-bottom-left-radius: 1rem;
+        }
+        .equal {
+            grid-area: equal;
+            background-color: lightgreen;
+            border-bottom-right-radius: 1rem;
+
+        }
+
+        
+    </style>
+
+    <div class="calculator">
+
+        <label class="display">0</label>
+
+        <button class="plus">+</button>
+        <button class="minus">-</button>
+        <button class="multiply">x</button>
+        <button class="divide">/</button>
+
+        <button class="seven">7</button>
+        <button class="eight">8</button>
+        <button class="nine">9</button>
+
+        <button class="four">4</button>
+        <button class="five">5</button>
+        <button class="six">6</button>
+
+        <button class="one">1</button>
+        <button class="two">2</button>
+        <button class="three">3</button>
+
+        <button class="zero">0</button>
+        <button class="dot">.</button>
+        <button class="clear">C</button>
+
+        <button class="equal">=</button>
+
+    </div>
+
+
+    <script>
+        console.log("Hi")
+    </script>
+
+</body>
+
+</html>
