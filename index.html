@@ -135,10 +135,10 @@
 
         <label class="display">0</label>
 
-        <button class="plus">+</button>
-        <button class="minus">-</button>
-        <button class="multiply">x</button>
-        <button class="divide">/</button>
+        <button class="plus" data-action="plus">+</button>
+        <button class="minus" data-action="minus">-</button>
+        <button class="multiply" data-action="multiply">x</button>
+        <button class="divide" data-action="divide">/</button>
 
         <button class="seven">7</button>
         <button class="eight">8</button>
@@ -153,16 +153,54 @@
         <button class="three">3</button>
 
         <button class="zero">0</button>
-        <button class="dot">.</button>
-        <button class="clear">C</button>
+        <button class="dot" data-action="dot">.</button>
+        <button class="clear" data-action="clear">C</button>
 
-        <button class="equal">=</button>
+        <button class="equal" data-action="cal">=</button>
 
     </div>
 
 
     <script>
-        console.log("hi github")
+        const keys = document.querySelector('.calculator')
+        const display = document.querySelector('.display')
+    
+        keys.addEventListener('click', e =>{
+            if(e.target.matches('button')){
+                const key = e.target
+                const action = key.dataset.action
+                const keyContent = key.textContent
+                const displayNum = display.textContent
+
+                if(!action){
+                    console.log("Number key")
+                    if(displayNum === '0'){
+                        display.textContent = keyContent
+                    }else{
+                        display.textContent = displayNum + keyContent
+                    }
+                }
+
+                if(action === 'plus' || action == 'minus' || action =='divide' || action == 'multiply' ){
+                    console.log("Operator key")
+                }
+
+                if(action === "dot"){
+                    console.log('Decimal key')
+                }
+
+                if(action === "clear"){
+                    console.log('Clear key')
+                }
+
+                if(action === "cal"){
+                    console.log('Calculate key')
+                }
+
+
+            }
+        })
+       
     </script>
 
 </body>
