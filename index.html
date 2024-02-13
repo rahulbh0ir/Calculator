@@ -128,6 +128,9 @@
 
         }
 
+        .press{
+            background-color: lightsalmon;
+        }
         
     </style>
 
@@ -164,38 +167,74 @@
     <script>
         const keys = document.querySelector('.calculator')
         const display = document.querySelector('.display')
-    
+        const calculator = document.querySelector('.calculator')
+
         keys.addEventListener('click', e =>{
             if(e.target.matches('button')){
                 const key = e.target
                 const action = key.dataset.action
                 const keyContent = key.textContent
                 const displayNum = display.textContent
+                const previousKeyType = calculator.dataset.previousKeyType
+
+                function calculate(n1, operator, n2){
+                    let result = ""
+
+                    if(operator === 'plus'){
+                        result = parseFloat(n1) + parseFloat(n2)
+                    }else if(operator === 'minus'){
+                        result = parseFloat(n1) - parseFloat(n2)
+                    }else if(operator === 'multiply'){
+                        result = parseFloat(n1) * parseFloat(n2)
+                    }else if(operator === 'divide'){
+                        result = parseFloat(n1) / parseFloat(n2)   
+                    }
+                    
+                    return result
+                }
+                //Remove press
+                 Array.from(key.parentNode.children)
+                    .forEach(k => k.classList.remove('press')) 
 
                 if(!action){
                     console.log("Number key")
-                    if(displayNum === '0'){
+                    if(displayNum === '0' || previousKeyType === 'operator'){
                         display.textContent = keyContent
                     }else{
                         display.textContent = displayNum + keyContent
-                    }
+                    }   
                 }
 
-                if(action === 'plus' || action == 'minus' || action =='divide' || action == 'multiply' ){
+                if(action === 'plus' || action === 'minus' || action ==='divide' || action === 'multiply' ){
                     console.log("Operator key")
+                    key.classList.add('press')
+                    //add custom attribute
+                    calculator.dataset.previousKeyType = 'operator'
+                    calculator.dataset.firstValue = displayNum
+                    calculator.dataset.operator = action
+                   
                 }
 
                 if(action === "dot"){
                     console.log('Decimal key')
+                    display.textContent = displayNum + '.'
                 }
 
                 if(action === "clear"){
                     console.log('Clear key')
+                    display.textContent = '0'
                 }
 
                 if(action === "cal"){
                     console.log('Calculate key')
+                    const firstValue = calculator.dataset.firstValue
+                    const operator = calculator.dataset.operator
+                    const secondValue = displayNum
+
+                    display.textContent = calculate(firstValue, operator, secondValue)
                 }
+
+             
 
 
             }
